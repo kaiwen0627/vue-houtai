@@ -85,3 +85,7 @@ export function isArray(arg) {
   }
   return Array.isArray(arg)
 }
+export function validPassword(str) {
+  const valid_pwd = /[A-Za-z0-9]{5,19}/;
+  return valid_pwd.test(str.trim());
+}
