@@ -1,5 +1,5 @@
 import { asyncRoutes, constantRoutes } from '@/router'
-//import { asyncRoutes, constantRoutes } from "../../../mock/role/routes";
+
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -58,7 +58,6 @@ const actions = {
       commit('SET_ROUTES', accessedRoutes)
       resolve(accessedRoutes)
     })
-  
   }
 }
 

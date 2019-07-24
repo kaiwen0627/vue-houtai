@@ -6,7 +6,8 @@
     position: relative;
     margin:50px 0 0 $sideBarWidth;
     position: fixed;
-    width:90%;
+//width:90%;
+    width: calc(100% - #{$sideBarWidth});
   }
 
   .sidebar-container {
