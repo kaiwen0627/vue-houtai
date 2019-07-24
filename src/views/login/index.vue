@@ -46,11 +46,8 @@
       </el-tooltip>
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
-
-      <div style="position:relative">        
-
+      <router-link to='/forget' replace class='forgetMi'>忘记密码？</router-link>
      
-      </div>
     </el-form>
 
    
@@ -311,6 +308,12 @@ $light_gray:#eee;
     .thirdparty-button {
       display: none;
     }
+  }
+  .forgetMi{
+    display: block;
+    text-align: right;
+    color: #fff;
+    margin:0 0 10px 0;
   }
 }
 </style>

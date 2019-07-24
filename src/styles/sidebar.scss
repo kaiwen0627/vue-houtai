@@ -81,14 +81,14 @@
     .is-active>.el-submenu__title {
       color: $subMenuActiveText !important;
     }
-
+  
     & .nest-menu .el-submenu>.el-submenu__title,
-    & .el-submenu .el-menu-item {
+    & .el-submenu .el-menu-item  {
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
 
       &:hover {
-        background-color: $subMenuHover !important;
+        background-color: $panGreen !important;
       }
     }
   }
@@ -194,6 +194,7 @@
       background-color: $menuHover !important;
     }
   }
+
 
   // the scroll bar appears when the subMenu is too long
   >.el-menu--popup {

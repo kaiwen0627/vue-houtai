@@ -121,10 +121,7 @@
     }
   }
 
- .el-form-item{
-   margin:0;
- }
-  
+
 .el-input {
   display: inline-block;
   height: 47px;
