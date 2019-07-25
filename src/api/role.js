@@ -7,6 +7,13 @@ export function getRoutes() {
   })
 }
 
+export function getAsyncRoutes() {
+  return request({
+    url: '/asyncroutes',
+    method: 'get'
+  })
+}
+
 export function getRoles() {
   return request({
     url: '/roles',

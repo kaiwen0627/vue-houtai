@@ -1,4 +1,5 @@
 import { asyncRoutes, constantRoutes } from '@/router'
+import { getAsyncRoutes } from '../../api/role'
 
 /**
  * Use meta.role to determine if the current user has permission
@@ -11,6 +12,37 @@ function hasPermission(roles, route) {
   } else {
     return true
   }
+}
+
+function makePermissionRouters(serverArr) {
+  // console.log(asyncRoutes)
+  // console.log(serverArr)
+  asyncRoutes.map((v, i) => {
+    // console.log(v)
+
+    const v_name = v.name || ''
+    console.log(v_name)
+
+    if (v.children && v.children.length > 0) {
+      // makePermissionRouters(v)
+    } else {
+      // 没有子菜单
+      if (v.meta && v.meta.role) {
+        console.log(11111)
+
+        serverArr.forEach(currentItem => {
+          console.log(currentItem)
+
+          if (currentItem.name === v_name) {
+            console.log(currentItem.meta.role)
+
+            v.meta.role = currentItem.meta.roles
+          }
+        })
+      }
+    }
+  })
+  console.log(asyncRoutes)
 }
 
 /**
@@ -48,6 +80,12 @@ const mutations = {
 
 const actions = {
   generateRoutes({ commit }, roles) {
+    getAsyncRoutes().then(res => {
+      const data = res.data
+      // console.log(data)
+      makePermissionRouters(data)
+    })
+
     return new Promise(resolve => {
       let accessedRoutes
       if (roles.includes('admin')) {
