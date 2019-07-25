@@ -148,10 +148,10 @@ export default {
     // 分页功能
     handleCurrentChange(val) {
       this.currentPage = val
-      var currentPage = {
-        'current': val,
-        'size': this.size
-      }
+      // var currentPage = {
+      //   'current': val,
+      //   'size': this.size
+      // }
     },
     handleSizeChange(val) {
       console.log(val)
