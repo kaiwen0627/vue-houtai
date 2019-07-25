@@ -1,7 +1,11 @@
 <template>
   <div class="base_bg_container">
     <div class="newPlate-container">
-      <el-form ref="form" :model="form" label-width="150px" :rules="formRules">
+      <div class="detailContent">
+          <p><i class='titleleftbar'></i><span>平台基本信息</span></p>
+        <el-button type="primary"  round size="small" @click="back">返回</el-button>
+      </div>
+      <el-form ref="form" :model="form" label-width="150px" :rules="formRules" class='addplate'>
         <el-form-item label="分管账套名称" prop="name">
           <el-input v-model="form.name" size="small" />
         </el-form-item>
@@ -12,7 +16,7 @@
           <sanji v-model="form.city" :fill-data="filldataArr" @ssqchange="changesanji" />
         </el-form-item>
         <el-form-item label="使用周期" prop="data">
-          <el-col :span="5">
+          <el-col :span="3">
             <el-date-picker
               ref="date1"
               v-model="form.data.date1"
@@ -23,8 +27,8 @@
               format=" yyyy-MM-dd"
             />
           </el-col>
-          <el-col class="line" :span="2" style="text-align: center;">-</el-col>
-          <el-col :span="5">
+          <el-col class="line" :span="1" style="text-align: center;">至</el-col>
+          <el-col :span="3">
             <el-date-picker
               ref="date2"
               v-model="form.data.date2"
@@ -45,15 +49,16 @@
         <el-form-item label="管理员账号" prop="glacNum">
           <el-input v-model="form.glacNum" size="small" />
         </el-form-item>
-        <el-form-item label="备注" prop="desc">
+        <el-form-item label="备注说明" prop="desc">
           <el-input v-model="form.desc" type="textarea" size="small" />
         </el-form-item>
-        <el-form-item>
-          <el-button type="primary" size="small" @click="onSubmit">确定</el-button>
-          <el-button type="primary" size="small" @click="onSave">保存</el-button>
-          <el-button size="small" @click="onCancel">取消</el-button>
-        </el-form-item>
-      </el-form>
+        
+      </el-form>      
+    </div>
+    <div class='btngroups'>
+      <el-button type="primary" size="small" @click="onSubmit" round>保存</el-button>
+      <el-button type="primary" size="small" @click="onSave" round>保存,继续配置功能</el-button>
+      <el-button size="small" @click="onCancel" round>取消</el-button>
     </div>
   </div>
 </template>
@@ -133,6 +138,9 @@ export default {
       this.$refs.form.resetFields()
       this.form.data.date1 = ''
       this.form.data.date2 = ''
+    },
+    back(){
+      this.$router.go(-1);
     }
   }
 }
@@ -154,5 +162,22 @@ export default {
 <style lang="scss" scoped>
 .newPlate-container{
   background: #fff;
+  .detailContent{
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+    height: 50px;
+    line-height:50px;
+    padding:0 10px;
+    span{
+      padding:0 0 0 10px;
+    }
+  }
+  .addplate{
+    padding: 0 0 10px 0;
+  }
+}
+.btngroups{
+  margin:10px 0 0 0;
 }
 </style>

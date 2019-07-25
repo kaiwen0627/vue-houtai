@@ -195,3 +195,21 @@ aside {
    min-height: 100vh;
    padding: 20px 20px 0px;
 }
+.titleleftbar {  
+  display: inline-block;
+  height: 17px;
+  border: 2px solid #30b08f;
+  vertical-align: middle;
+}
+.login-container{
+  background: url('../icons/login_bg_green.png') no-repeat;
+}
+.login-inner-container{
+
+  min-height: 100vh;
+  width: 1000px; 
+  margin:0 auto;
+  background: url('../icons/login_bg_white.png') no-repeat;
+  background-size: 100%;
+  background-position-y: 50%;
+}

@@ -2,7 +2,7 @@
   <div class='base_bg_container'>
     <div class='reset-container'>
         <div class='titlebar'>
-          <i></i>
+          <i class='titleleftbar'></i>
           <span>修改密码</span>
         </div>
          <el-form ref="resetForm" :model="resetForm" :rules="resetFormRules" class="reset-form" auto-complete="on"
@@ -115,11 +115,7 @@
   $light_gray:#aaa;
   $cursor: #aaa;
 
-  @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-    .login-container .el-input input {
-      color: $cursor;
-    }
-  }
+
 
 
 .el-input {
@@ -153,12 +149,7 @@
     overflow: hidden; 
     .titlebar{
       padding:10px 0 0 10px;
-      i{
-        display: inline-block;
-        height: 17px;
-        border: 2px solid #30b08f;
-        vertical-align: middle;
-      }
+     
       span{
         color: #333;
         font-size: 15px;
