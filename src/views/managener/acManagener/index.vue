@@ -123,12 +123,15 @@ export default {
       this.$router.push({ path: '/acMangentnewPlate' })
     },
     detailBtn(scope) {
-      this.dialogTableVisible = true
+      this.$router.push({path:'/acMangentdetail'})      
+      
       console.log(scope)
     },
-    editBtn() {},
+    editBtn(scope) {
+      this.$router.push({path:'/acMangentedit'})
+    },
     setBtn() {
-
+      this.$router.push({path:'/acMangentepeizhi'})
     },
     closeaddDialog() {
 

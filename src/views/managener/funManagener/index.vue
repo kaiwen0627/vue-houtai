@@ -256,7 +256,14 @@ export default {
       const parent = node.parent
       const children = parent.data.children || parent.data
       const index = children.findIndex(d => d.id === data.id)
-      children.splice(index, 1)
+      this.$confirm('确定要删除吗?', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+      }).then(()=>{
+          children.splice(index, 1)
+      })
+      
     },
 
     renderContent(h, { node, data, store }) {  
