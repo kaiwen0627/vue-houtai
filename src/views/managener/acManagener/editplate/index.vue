@@ -3,7 +3,7 @@
     <div class="newPlate-container">
       <div class="detailContent">
         <p><i class='titleleftbar'></i><span>平台基本信息</span></p>
-        <el-button type="primary" round size="mini" @click="back">返回</el-button>
+        <!-- <el-button type="primary" round size="mini" @click="back">返回</el-button> -->
       </div>
       <el-form ref="form" :model="form" label-width="150px" :rules="formRules" class='addplate'>
         <el-form-item label="分管账套名称" prop="name">
@@ -151,9 +151,9 @@
         this.form.data.date1 = ''
         this.form.data.date2 = ''
       },
-      back() {
-        this.$router.go(-1);
-      }
+      // back() {
+      //   this.$router.go(-1);
+      // }
     }
   }
 </script>

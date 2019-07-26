@@ -4,9 +4,13 @@
       <div class="detailContent">
         <p><i class='titleleftbar'></i><span>平台基本信息</span></p>
         <div>
-             <el-button type="primary" round size="mini" @click="edit">编辑</el-button>
-             <!-- <el-button type="primary" plain size="mini" @click="back">返回</el-button> -->
-        </div>
+                <!-- <el-button type="primary" round size="mini" @click="edit">编辑</el-button> -->
+                <!-- <el-button type="primary" plain size="mini" @click="back">返回</el-button> -->
+                <router-link :to="'/managener/acMangentedit/'+this.$route.params.id" class='cblue'>
+                   <el-button type="primary" round size="mini">编辑</el-button>
+                   </el-button>
+                </router-link>
+          </div>
        
       </div>
       <ul class='detailList'>
@@ -80,12 +84,15 @@
       }
     },
     mounted() {
-     
+    // this.aaaa()
     },
     methods: {
-      edit(){
-        this.$router.push({path:'/acMangentedit'})
-      },
+      // aaaa(){
+      //     //console.log(this.$route.params.id)
+      // },
+      // edit(){
+      //   this.$router.push({path:'/acMangentedit'})
+      // },
         // 分页功能
       handleCurrentChange(val) {
         this.currentPage = val
