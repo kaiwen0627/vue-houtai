@@ -2,8 +2,8 @@
   <div class="base_bg_container">
     <div class="newPlate-container">
       <div class="detailContent">
-          <p><i class='titleleftbar'></i><span>平台基本信息</span></p>
-        <el-button type="primary"  round size="small" @click="back">返回</el-button>
+        <p><i class='titleleftbar'></i><span>平台基本信息</span></p>
+        <!-- <el-button type="primary" plain size="mini" @click="back">返回</el-button> -->
       </div>
       <el-form ref="form" :model="form" label-width="150px" :rules="formRules" class='addplate'>
         <el-form-item label="分管账套名称" prop="name">
@@ -56,9 +56,9 @@
       </el-form>      
     </div>
     <div class='btngroups'>
-      <el-button type="primary" size="small" @click="onSubmit" round>保存</el-button>
-      <el-button type="primary" size="small" @click="onSave" round>保存,继续配置功能</el-button>
-      <el-button size="small" @click="onCancel" round>取消</el-button>
+      <el-button type="primary" size="mini" @click="onSubmit" round>保存</el-button>
+      <el-button type="primary" size="mini" @click="onSave" round>保存,继续配置功能</el-button>
+      <el-button size="mini" @click="onCancel" round>取消</el-button>
     </div>
   </div>
 </template>
@@ -139,9 +139,9 @@ export default {
       this.form.data.date1 = ''
       this.form.data.date2 = ''
     },
-    back(){
-      this.$router.go(-1);
-    }
+    // back(){
+    //   this.$router.go(-1);
+    // }
   }
 }
 </script>
@@ -158,6 +158,7 @@ export default {
     vertical-align: bottom;
     font-size: 14px;
   }
+ 
 </style>
 <style lang="scss" scoped>
 .newPlate-container{

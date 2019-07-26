@@ -11,13 +11,13 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" round @click="onSubmit">查询</el-button>
-          <el-button size="small" round @click="onReset">重置</el-button>
+          <el-button type="primary" size="mini" round @click="onSubmit">搜索</el-button>
+          <el-button size="mini" round @click="onReset">重置</el-button>
         </el-form-item>
       </el-form>
       <div class="detailContent">
         <p><i class="titleleftbar" /><span>详细信息</span></p>
-        <el-button type="primary" icon="el-icon-circle-plus-outline" round size="small" @click="addBtn" class='addplat'>新增平台</el-button>
+        <el-button type="primary" icon="el-icon-circle-plus-outline" round size="mini" @click="addBtn" class='addplat'>新增平台</el-button>
       </div>
       <el-table ref="singleTable" :data="tableData" stripe style="width: 100%">
         <el-table-column type="index" width="50" label="序号" />
@@ -34,9 +34,12 @@
         <el-table-column prop="name" label="建立时间" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="text" size="small" @click="detailBtn(scope)">详情</el-button>
-            <el-button type="text" size="small" @click="editBtn(scope)">编辑</el-button>
-            <el-button type="text" size="small" @click="setBtn(scope)">配置功能</el-button>
+            <router-link :to="'/managener/acMangentdetail/'+scope.$index" class='cblue'>详情</router-link>
+            <router-link :to="'/managener/acMangentedit/'+scope.$index" class='cblue'>编辑</router-link>
+            <router-link :to="'/managener/acMangentepeizhi/'+scope.$index" class='cblue'>配置功能</router-link>
+            <!-- <span class='cblue' @click="detailBtn(scope)">详情</span>
+            <span class='cblue' @click="editBtn(scope)">编辑</span>
+            <span class='cblue' @click="setBtn(scope)">配置功能</span> -->
           </template>
         </el-table-column>
       </el-table>
@@ -119,13 +122,13 @@ export default {
       this.$refs.formInline.resetFields()
     },
     addBtn() {
-      this.$router.push({ path: '/acMangentnewPlate' })
+      this.$router.push({ path: '/managener/acMangentnewPlate' })
     },
-    detailBtn(scope) {
-      this.$router.push({ path: '/acMangentdetail' })
+    // detailBtn(scope) {
+    //  this.$router.push({ path: "'/managener/acMangentdetail' + scope.$index" })
 
-      console.log(scope)
-    },
+    //   console.log(scope.$index)
+    // },
     editBtn(scope) {
       this.$router.push({ path: '/acMangentedit' })
     },
@@ -144,7 +147,7 @@ export default {
       // }
     },
     handleSizeChange(val) {
-      console.log(val)
+      //console.log(val)
     }
   }
 }
@@ -202,10 +205,11 @@ export default {
     text-align: right;
     padding:10px 0 0 0 ;
   }
-   .el-button{
-    margin:auto;
-   }
+   
    .addplat{
     margin:0 20px 0 0;
+   }
+   .cblue{
+     color:#1ccab5;
    }
 </style>

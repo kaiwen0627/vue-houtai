@@ -3,7 +3,11 @@
     <div class="editPlate-container">
       <div class="detailContent">
         <p><i class='titleleftbar'></i><span>平台基本信息</span></p>
-        <el-button type="primary" round size="small" @click="edit">编辑</el-button>
+        <div>
+             <el-button type="primary" round size="mini" @click="edit">编辑</el-button>
+             <!-- <el-button type="primary" plain size="mini" @click="back">返回</el-button> -->
+        </div>
+       
       </div>
       <ul class='detailList'>
         <li>
@@ -92,7 +96,10 @@
       },
       handleSizeChange(){
 
-      }
+      },
+      // back(){
+      //   this.$router.go(-1)
+      // }
     }
   }
 </script>

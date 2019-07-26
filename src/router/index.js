@@ -81,7 +81,7 @@ export const asyncRoutes = [
          {
            path: "/managener",
            component: Layout,
-           redirect: "/managener/funManagener",
+           redirect: "/managener/acManagener",
            name: "Managener",
            meta: {
              title: "各平台管理",
@@ -116,89 +116,142 @@ export const asyncRoutes = [
                component: () =>
                  import("@/views/managener/screenAccount/index"),
                meta: { title: "可视化大屏账号管理", icon: "table" }
-             }
-           ]
-         },
-         {
-           path: "/acMangentnewPlate",
-           component: Layout,
-           redirect: "/acMangentnewPlate/index",
-           name: "AcMangentnewPlate",
-           hidden: true,
-           meta: {
-             title: "回收系统账套管理 / 新增平台",
-             icon: "Rest",
-             role: []
-           },
-           children: [
+             },
              {
-               path: "/acMangentnewPlate/index",
+               path: "acMangentnewPlate",
+               name: "AcMangentnewPlate",
+               hidden: true,
                component: () =>
                  import("@/views/managener/acManagener/newPlate/index"),
-               name: "index"
-             }
-           ]
-         },
-         {
-           path: "/acMangentdetail",
-           component: Layout,
-           redirect: "/acMangentdetail/index",
-           name: "AcMangentdetail",
-           hidden: true,
-           meta: {
-             title: "回收系统账套管理 / 详情",
-             icon: "Rest",
-             role: []
-           },
-           children: [
+               meta: {
+                 title: " 新增平台",
+                 icon: "Rest",
+                 role: []
+               }
+             },
              {
-               path: "/acMangentdetail/index",
+               path: "acMangentdetail/:id",
+               name: "AcMangentdetail",
+               hidden: true,
                component: () =>
                  import("@/views/managener/acManagener/acdetail/index"),
-               name: "index"
-             }
-           ]
-         },
-         {
-           path: "/acMangentedit",
-           component: Layout,
-           redirect: "/acMangentedit/index",
-           name: "AcMangentedit",
-           hidden: true,
-           meta: {
-             title: "回收系统账套管理 / 编辑",
-             icon: "Rest",
-             role: []
-           },
-           children: [
+               meta: {
+                 title: " 详情",
+                 icon: "Rest",
+                 role: [],
+                 noCache: true,
+                 activeMenu: "/managener/acManagener"
+               }
+             },
              {
-               path: "/acMangentedit/index",
+               path: "acMangentedit/:id",
+               name: "AcMangentedit",
+               hidden: true,
                component: () =>
                  import("@/views/managener/acManagener/editplate/index"),
-               name: "index"
-             }
-           ]
-         },
-         {
-           path: "/acMangentepeizhi",
-           component: Layout,
-           redirect: "/acMangentepeizhi/index",
-           name: "AcMangentepeizhi",
-           hidden: true,
-           meta: {
-             title: "回收系统账套管理 / 配置管理",
-             icon: "Rest",
-             role: []
-           },
-           children: [
+               meta: {
+                 title: " 编辑",
+                 icon: "Rest",
+                 role: [],
+                 noCache: true,
+                 activeMenu: "/managener/acManagener"
+               }
+             },
              {
-               path: "/acMangentepeizhi/index",
+               path: "acMangentepeizhi/:id",
+               name: "AcMangentepeizhi",
+               hidden: true,
                component: () =>
                  import("@/views/managener/acManagener/peizhi/index"),
-               name: "index"
+               meta: {
+                 title: " 配置功能 ",
+                 icon: "Rest",
+                 role: [],
+                 noCache: true,
+                 activeMenu: "/managener/acManagener"
+               }
              }
            ]
          },
+         //  {
+         //    path: "/acMangentnewPlate",
+         //    component: Layout,
+         //    redirect: "/acMangentnewPlate/index",
+         //    name: "AcMangentnewPlate",
+         //    hidden: true,
+         //    meta: {
+         //      title: " 新增平台",
+         //      icon: "Rest",
+         //      role: []
+         //    },
+         //    children: [
+         //      {
+         //        path: "/acMangentnewPlate/index",
+         //        component: () =>import("@/views/managener/acManagener/newPlate/index"),
+         //        name: "index"
+         //      }
+         //    ]
+         //  },
+         //  {
+         //    path: "/acMangentdetail",
+         //    component: Layout,
+         //    redirect: "/acMangentdetail/index",
+         //    name: "AcMangentdetail",
+         //    hidden: true,
+         //    meta: {
+         //      title: "回收系统账套管理 / 详情",
+         //      icon: "Rest",
+         //      role: []
+         //    },
+         //    children: [
+         //      {
+         //        path: "/acMangentdetail/index",
+         //        component: () =>
+         //          import("@/views/managener/acManagener/acdetail/index"),
+         //        name: "index"
+         //      }
+         //    ]
+         //  },
+         //  {
+         //    path: "/acMangentedit",
+         //    component: Layout,
+         //    redirect: "/acMangentedit/index",
+         //    name: "AcMangentedit",
+         //    hidden: true,
+         //    meta: {
+         //      title: "回收系统账套管理 / 编辑",
+         //      icon: "Rest",
+         //      role: []
+         //    },
+         //    children: [
+         //      {
+         //        path: "/acMangentedit/index",
+         //        component: () =>
+         //          import("@/views/managener/acManagener/editplate/index"),
+         //        name: "index"
+         //      }
+         //    ]
+         //  },
+         //  {
+         //    path: "/acMangentepeizhi",
+         //    component: Layout,
+         //    redirect: "/acMangentepeizhi/index",
+         //    name: "AcMangentepeizhi",
+         //    hidden: true,
+         //    meta: {
+         //      title: "回收系统账套管理 / 配置管理",
+         //      icon: "Rest",
+         //      role: []
+         //    },
+         //    children: [
+         //      {
+         //        path: "/acMangentepeizhi/index",
+         //        component: () =>
+         //          import("@/views/managener/acManagener/peizhi/index"),
+         //        name: "index"
+         //      }
+         //    ]
+         //  },
          {
            path: "/system",
            component: Layout,

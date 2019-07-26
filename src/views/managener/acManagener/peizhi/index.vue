@@ -3,29 +3,15 @@
     <div class="editPlate-container">
       <div class="detailContent">
         <p><i class='titleleftbar'></i><span>配置功能</span></p>        
-      </div>
-      <div class='qianduan'>
-          <div class='qianduanTop'>
-            <span class='bggrey'>
-              <el-checkbox v-model="qdchecked" @change="qdcheckedAll" /> 前端功能(app功能)
-            </span>
-            <div>
-              <el-button type="primary" round size="small" @click="qdcommit">确定</el-button>
-              <el-button  round size="small" @click="qdcancel">取消</el-button>
-            </div>
-          </div>
-          <el-tree :data="qddata" show-checkbox node-key="id" :default-expanded-keys="[1,2]" :default-checked-keys="[3]"
-            :props="qddefaultProps" ref="vuetree" @node-click="qdnodeclick">
-          </el-tree>
-      </div>
+      </div>      
       <div class='houduan'>
           <div class='qianduanTop'>
             <span class='bggrey'>
               <el-checkbox v-model="hdchecked" @change="hdcheckedAll" /> 前端功能(app功能)
             </span>
             <div>
-              <el-button type="primary" round size="small" @click="hdcommit">确定</el-button>
-              <el-button round size="small" @click="hdcancel">取消</el-button>
+              <el-button type="primary" round size="mini" @click="hdcommit">确定</el-button>
+              <el-button round size="mini" @click="hdcancel">取消</el-button>
             </div>
           </div>
           <el-tree :data="hddata" show-checkbox node-key="id" :default-expanded-keys="[1,2]" :default-checked-keys="[3]"
@@ -34,8 +20,8 @@
       </div>
     </div>
     <div class='btngroup'>
-      <el-button type="primary" round size="small" @click="commit">确定</el-button>
-      <el-button round size="small" @click="cancel">取消</el-button>
+      <el-button type="primary" round size="mini" @click="commit">确定</el-button>
+      <el-button round size="mini" @click="cancel">取消</el-button>
     </div>
   </div>
 </template>
@@ -43,30 +29,8 @@
   export default {
     name: 'AcMangentdpeizhi',
     data() {
-      return {
-          qdchecked:false,
-          qddata:[
-            {
-              id: 1,
-              label: '一级 1',
-              children: [{
-                id: 4,
-                label: '二级 1-1',
-                children: [{
-                    id: 9,
-                    label: '三级 1-1-1'
-                  }, {
-                    id: 10,
-                    label: '三级 1-1-2'
-                  }]
-              }]
-            }
-          ],
-          qddefaultProps: {
-            children: 'children',
-            label: 'label'
-          },
-          hdchecked:false,
+      return {   
+        hdchecked:false,
           hddata:[
             {
               id: 1,
@@ -94,21 +58,7 @@
 
     },
     methods: {
-      edit() {
-
-      },
-      qdcheckedAll(){        
-        if (this.qdchecked) {
-        //全选
-        this.$refs.vuetree.setCheckedNodes(this.qddata);
-        }else{
-        //取消选中
-        this.$refs.vuetree.setCheckedKeys([]);
-        }
-      },
-      qdcommit(){},
-      qdcancel(){},
-      qdnodeclick(date, node, slef){},
+      
       hdcheckedAll(){
         if (this.hdchecked) {
         //全选
