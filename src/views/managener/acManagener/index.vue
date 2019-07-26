@@ -17,7 +17,7 @@
       </el-form>
       <div class="detailContent">
         <p><i class="titleleftbar" /><span>详细信息</span></p>
-        <el-button type="primary" icon="el-icon-circle-plus-outline" round size="small" @click="addBtn">新增平台</el-button>
+        <el-button type="primary" icon="el-icon-circle-plus-outline" round size="small" @click="addBtn" class='addplat'>新增平台</el-button>
       </div>
       <el-table ref="singleTable" :data="tableData" stripe style="width: 100%">
         <el-table-column type="index" width="50" label="序号" />
@@ -170,10 +170,7 @@ export default {
       border-radius: 5px !important;
     }
   }
-  .el-table{
-    border-bottom-left-radius: 5px !important;
-     border-bottom-right-radius: 5px !important;
-  }
+ 
 </style>
 <style lang="scss" scoped>
   .detailContent{
@@ -182,23 +179,19 @@ export default {
     align-items:center;
     background: #fff;
     margin: 20px 0 0 0;
-    padding: 0 0 0 20px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    padding: 0 0 0 20px;  
     border-bottom:1px solid #eee;
     span{
       padding:0 0 0 10px;
     }
-    button{
-      margin:0 20px 0 0;
-    }
+    
   }
   .app-container{
     padding:0;
     .demo-form-inline{
       background: #fff;
       padding:0 20px;
-      border-radius:5px;
+     
       height:60px;
       line-height:60px;
 
@@ -208,6 +201,11 @@ export default {
   .el-pagination{
     text-align: right;
     padding:10px 0 0 0 ;
-
   }
+   .el-button{
+    margin:auto;
+   }
+   .addplat{
+    margin:0 20px 0 0;
+   }
 </style>

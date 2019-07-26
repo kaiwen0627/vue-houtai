@@ -37,8 +37,8 @@
                   type="text" class='yangzhengmaIpt'/>
             
              <span class='rowright'>
-               <el-button plain @click='postMess' v-show="sendAuthCode" size='mini'>发送短信验证码</el-button>
-               <el-button plain @click='postMess' v-show="!sendAuthCode" size='mini'>{{auth_time}}秒之后重新发验证码</el-button>
+               <el-button plain @click='postMess' v-show="sendAuthCode" size='mini' type='primary'>发送短信验证码</el-button>
+               <el-button plain @click='postMess' v-show="!sendAuthCode" size='mini' type='primary'>{{auth_time}}秒之后重新发验证码</el-button>
             </span>
 
          </el-form-item>

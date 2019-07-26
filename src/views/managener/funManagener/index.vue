@@ -1,100 +1,106 @@
 <template>
-  <div class="custom-tree-container">
-    <div class="block">
-      <p>后端功能(后台功能)</p>
-      <el-tree
-        :data="data_table"
-        draggable
-        node-key="id"
-        :allow-drop="allowDrop"
-        @node-drop="sort"
-        default-expand-all
-        :expand-on-click-node="false"
-        :render-content="renderContent"
-        @node-click="nodeclick"
-      >
-      </el-tree>
-      <!-- 新增 -->
-      <el-dialog
-        title="新增"
-        :visible.sync="dialogVisible"
-        width="40%"
-        :before-close="handleClose"
-        :modal-append-to-body='false'
-      >
-        <el-form :model="ruleForm" ref="ruleForm" :rules="formRules" label-width="110px" class="demo-ruleForm">
-          <el-form-item label="功能名称:" prop="label">
-            <el-input v-model="ruleForm.label" size='small'></el-input>
-          </el-form-item>
-           <el-form-item label="描述:" prop="description">
-             <el-input type="textarea" v-model="ruleForm.description" size='small'></el-input>
-           </el-form-item>
-           <el-form-item label="功能类型:" prop='type'>
-             <el-radio-group v-model="ruleForm.type" @change="changeRadio">
-              <el-radio  label="1">root</el-radio>
-              <el-radio  label="2">应用</el-radio>
-              <el-radio label="3">菜单</el-radio>
-              <el-radio label="4">按钮</el-radio>
-             </el-radio-group>
-           </el-form-item>
-           <el-form-item label="模板路径:" prop="	templatePath">
-             <el-input v-model="ruleForm.templatePath" size='small'></el-input>
-           </el-form-item>
-           <el-form-item label="指向地址:" prop="url">
-             <el-input v-model="ruleForm.url" size='small'></el-input>
-           </el-form-item>
-           <el-form-item label="跳转地址:" prop="href">
-             <el-input v-model="ruleForm.href" size='small'></el-input>
-           </el-form-item>
-           <el-form-item label="图标存放地址:" prop="src">
-             <el-input v-model="ruleForm.src" size='small'></el-input>
-           </el-form-item>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="addCancel" size='small'>取 消</el-button>
-          <el-button type="primary" @click="queding" size='small'>确 定</el-button
-          >
-        </span>
-      </el-dialog>
-      <!-- 编辑 -->
-       <el-dialog title="编辑" :visible.sync="dialogVisibleEdit"  append-to-body=""width="40%" :before-close="handleClose"
-         :modal-append-to-body='false'>
-         <el-form :model="ruleFormedit" ref="ruleFormedit" :rules="formRulesedit" label-width="110px" class="demo-ruleForm">
-          <el-form-item label="功能名称:" prop="label">
-            <el-input v-model="ruleFormedit.label" size='small'></el-input>
-          </el-form-item>
-          <el-form-item label="描述:" prop="description">
-            <el-input type="textarea" v-model="ruleFormedit.description" size='small'></el-input>
-          </el-form-item>
-          <el-form-item label="功能类型:" prop='type'>
-            <el-radio-group v-model="ruleFormedit.type" @change="changeRadio">
-              <el-radio label="1">root</el-radio>
-              <el-radio label="2">应用</el-radio>
-              <el-radio label="3">菜单</el-radio>
-              <el-radio label="4">按钮</el-radio>
-            </el-radio-group>
-          </el-form-item>
-          <el-form-item label="模板路径:" prop="	templatePath">
-            <el-input v-model="ruleFormedit.templatePath" size='small'></el-input>
-          </el-form-item>
-          <el-form-item label="指向地址:" prop="url">
-            <el-input v-model="ruleFormedit.url" size='small'></el-input>
-          </el-form-item>
-          <el-form-item label="跳转地址:" prop="href">
-            <el-input v-model="ruleFormedit.href" size='small'></el-input>
-          </el-form-item>
-          <el-form-item label="图标存放地址:" prop="src">
-            <el-input v-model="ruleFormedit.src" size='small'></el-input>
-          </el-form-item>
+   <div class='base_bg_container'>     
+       <div class="editPlate-container">
+          <ul class='detailList'>
+            <li>
+              <span>回收系统名称：</span><span class='textgrey'></span>
+            </li>
+            <li>
+              <span>链接地址：</span><a href=''></a>
+            </li>
+          </ul>
+         <div class='box'>
+               <div class='qianduanTop'>
+                 <span class='bggrey'>
+                   <span>后端功能(后台功能)</span>
+                 </span>
+               </div>
+               <div class="block">
+                 <el-tree :data="data_table" draggable node-key="id" :allow-drop="allowDrop" @node-drop="sort"
+                   default-expand-all :expand-on-click-node="false" :render-content="renderContent"
+                   @node-click="nodeclick">
+                 </el-tree>
+                 <!-- 新增 -->
+                 <el-dialog title="新增" :visible.sync="dialogVisible" width="40%" :before-close="handleClose"
+                   :modal-append-to-body='false'>
+                   <el-form :model="ruleForm" ref="ruleForm" :rules="formRules" label-width="110px"
+                     class="demo-ruleForm">
+                     <el-form-item label="功能名称:" prop="label">
+                       <el-input v-model="ruleForm.label" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="描述:" prop="description">
+                       <el-input type="textarea" v-model="ruleForm.description" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="功能类型:" prop='type'>
+                       <el-radio-group v-model="ruleForm.type" @change="changeRadio">
+                         <el-radio label="1">root</el-radio>
+                         <el-radio label="2">应用</el-radio>
+                         <el-radio label="3">菜单</el-radio>
+                         <el-radio label="4">按钮</el-radio>
+                       </el-radio-group>
+                     </el-form-item>
+                     <el-form-item label="模板路径:" prop="	templatePath">
+                       <el-input v-model="ruleForm.templatePath" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="指向地址:" prop="url">
+                       <el-input v-model="ruleForm.url" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="跳转地址:" prop="href">
+                       <el-input v-model="ruleForm.href" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="图标存放地址:" prop="src">
+                       <el-input v-model="ruleForm.src" size='small'></el-input>
+                     </el-form-item>
+                   </el-form>
+                   <span slot="footer" class="dialog-footer">
+                     <el-button @click="addCancel" size='small'>取 消</el-button>
+                     <el-button type="primary" @click="queding" size='small'>确 定</el-button>
+                   </span>
+                 </el-dialog>
+                 <!-- 编辑 -->
+                 <el-dialog title="编辑" :visible.sync="dialogVisibleEdit" append-to-body="" width="40%"
+                   :before-close="handleClose" :modal-append-to-body='false'>
+                   <el-form :model="ruleFormedit" ref="ruleFormedit" :rules="formRulesedit" label-width="110px"
+                     class="demo-ruleForm">
+                     <el-form-item label="功能名称:" prop="label">
+                       <el-input v-model="ruleFormedit.label" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="描述:" prop="description">
+                       <el-input type="textarea" v-model="ruleFormedit.description" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="功能类型:" prop='type'>
+                       <el-radio-group v-model="ruleFormedit.type" @change="changeRadio">
+                         <el-radio label="1">root</el-radio>
+                         <el-radio label="2">应用</el-radio>
+                         <el-radio label="3">菜单</el-radio>
+                         <el-radio label="4">按钮</el-radio>
+                       </el-radio-group>
+                     </el-form-item>
+                     <el-form-item label="模板路径:" prop="	templatePath">
+                       <el-input v-model="ruleFormedit.templatePath" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="指向地址:" prop="url">
+                       <el-input v-model="ruleFormedit.url" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="跳转地址:" prop="href">
+                       <el-input v-model="ruleFormedit.href" size='small'></el-input>
+                     </el-form-item>
+                     <el-form-item label="图标存放地址:" prop="src">
+                       <el-input v-model="ruleFormedit.src" size='small'></el-input>
+                     </el-form-item>
 
-         </el-form>
-         <span slot="footer" class="dialog-footer">
-           <el-button @click="dialogVisibleEdit = false">取 消</el-button>
-           <el-button type="primary" @click="editqueding">确 定</el-button>
-         </span>
-       </el-dialog>
-    </div>
-  </div>
+                   </el-form>
+                   <span slot="footer" class="dialog-footer">
+                     <el-button @click="dialogVisibleEdit = false">取 消</el-button>
+                     <el-button type="primary" @click="editqueding">确 定</el-button>
+                   </span>
+                 </el-dialog>
+               </div>
+         </div>
+       </div>
+   </div>
+    
+ 
 </template>
 
 <script>
@@ -362,7 +368,7 @@ export default {
    
   }
  .custom-tree-node-span{
-     padding:0 20px 0 0;
+     padding:0 80px 0 0;
  }
  .el-input {
     position: relative;
@@ -378,9 +384,28 @@ export default {
  }
 </style>
 <style type='scss' scoped>
+.editPlate-container {
+  background: #fff;
+}
+.box{
+  border:1px solid #eee;
+  padding:0 0 10px 0;
+  margin:20px 40px;
+}
  .block{
- width:60%;
- margin:0 auto;
+    margin: 0 0 0 30px;
+    padding: 10px 0;
  }
+.qianduanTop{
+    display: flex;
+    justify-content: space-between;
+    padding:0 20px;
+    background:#efefef;
+    height:40px;
+    line-height:40px;
+ }
+.detailList{
+  padding:20px 0 0 50px;  
+}
 
 </style>

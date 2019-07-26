@@ -214,3 +214,19 @@ aside {
   background-size: 100%;
   background-position-y: 50%;
 }
+.el-button--default {
+  background: #c3c3c3;
+  color: #fff;
+}
+.detailList {
+  padding:0;
+  margin:0;
+  list-style: none;
+  li{
+    height: 40px;
+    line-height: 40px;
+  }
+}
+.textgrey{
+  color: #6e6e6e;
+}

@@ -22,8 +22,8 @@
               <el-input ref="yanzhengma" v-model="forgetForm.yanzhengma" placeholder="请输入验证码" tabindex="2" />
             </el-col>
             <el-col :span="11" class='rowright'>
-              <el-button plain @click='postMess' v-show="sendAuthCode" size='mini'>发送短信验证码</el-button>
-              <el-button plain @click='postMess' v-show="!sendAuthCode" size='mini'>{{auth_time}}秒之后重新发验证码</el-button>
+              <el-button plain @click='postMess' v-show="sendAuthCode" size='mini' type='primary'>发送短信验证码</el-button>
+              <el-button plain @click='postMess' v-show="!sendAuthCode" size='mini' type='primary'>{{auth_time}}秒之后重新发验证码</el-button>
             </el-col>
           </el-row>
 
@@ -31,7 +31,7 @@
 
         <el-button type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handlecommit">提交
         </el-button>
-        <el-button style="width:100%;margin-bottom:30px;margin-left:0" @click.native.prevent="handlecancel">取消
+        <el-button style="width:100%;margin-bottom:30px;margin-left:0" @click.native.prevent="handlecancel" >取消
         </el-button>
       </el-form>
     </div>

@@ -21,20 +21,20 @@ function makePermissionRouters(serverArr) {
     // console.log(v)
 
     const v_name = v.name || ''
-    console.log(v_name)
+    //console.log(v_name)
 
     if (v.children && v.children.length > 0) {
       // makePermissionRouters(v)
     } else {
       // 没有子菜单
       if (v.meta && v.meta.role) {
-        console.log(11111)
+       // console.log(11111)
 
         serverArr.forEach(currentItem => {
-          console.log(currentItem)
+          //console.log(currentItem)
 
           if (currentItem.name === v_name) {
-            console.log(currentItem.meta.role)
+           // console.log(currentItem.meta.role)
 
             v.meta.role = currentItem.meta.roles
           }
@@ -42,7 +42,7 @@ function makePermissionRouters(serverArr) {
       }
     }
   })
-  console.log(asyncRoutes)
+  //console.log(asyncRoutes)
 }
 
 /**
