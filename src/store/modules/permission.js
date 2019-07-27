@@ -1,6 +1,8 @@
 import { asyncRoutes, constantRoutes } from '@/router'
 import { getAsyncRoutes } from '../../api/role'
+import { deepClone } from '../../utils/index'
 
+const clientRoutes = deepClone(asyncRoutes)
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -14,35 +16,28 @@ function hasPermission(roles, route) {
   }
 }
 
-function makePermissionRouters(serverArr) {
-  // console.log(asyncRoutes)
-  // console.log(serverArr)
-  asyncRoutes.map((v, i) => {
-    // console.log(v)
-
-    const v_name = v.name || ''
-    //console.log(v_name)
-
-    if (v.children && v.children.length > 0) {
-      // makePermissionRouters(v)
-    } else {
-      // 没有子菜单
-      if (v.meta && v.meta.role) {
-       // console.log(11111)
-
-        serverArr.forEach(currentItem => {
-          //console.log(currentItem)
-
-          if (currentItem.name === v_name) {
-           // console.log(currentItem.meta.role)
-
-            v.meta.role = currentItem.meta.roles
-          }
-        })
+/**
+ *
+ * @param {arr} clientAsyncRoutes 前端保存动态路由
+ * @param {arr} serverRouter 后端保存动态路由
+ */
+function makePermissionRouters(serverRouter, clientAsyncRoutes) {
+  clientAsyncRoutes.map(ele => {
+    if (!ele.name || (!ele.meta && !ele.meta.roles)) return
+    let roles_obj
+    for (let i = 0; i < serverRouter.length; i++) {
+      const element = serverRouter[i]
+      if (ele.name === element.name) {
+        roles_obj = element
       }
     }
+    ele.meta.roles = roles_obj.meta.roles
+
+    if (ele.children) {
+      makePermissionRouters(serverRouter, ele.children)
+    }
   })
-  //console.log(asyncRoutes)
+  return clientAsyncRoutes
 }
 
 /**
@@ -82,19 +77,19 @@ const actions = {
   generateRoutes({ commit }, roles) {
     getAsyncRoutes().then(res => {
       const data = res.data
-      // console.log(data)
-      makePermissionRouters(data)
-    })
+      const PermissionRouters = makePermissionRouters(data, clientRoutes)
+      return new Promise(resolve => {
+        let accessedRoutes
+        if (roles.includes('admin')) {
+          accessedRoutes = PermissionRouters || []
+        } else {
+          accessedRoutes = filterAsyncRoutes(PermissionRouters, roles)
+        }
+        console.log(accessedRoutes)
 
-    return new Promise(resolve => {
-      let accessedRoutes
-      if (roles.includes('admin')) {
-        accessedRoutes = asyncRoutes || []
-      } else {
-        accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-      }
-      commit('SET_ROUTES', accessedRoutes)
-      resolve(accessedRoutes)
+        commit('SET_ROUTES', accessedRoutes)
+        resolve(accessedRoutes)
+      })
     })
   }
 }
