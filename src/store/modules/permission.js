@@ -74,22 +74,27 @@ const mutations = {
 }
 
 const actions = {
-  generateRoutes({ commit }, roles) {
-    getAsyncRoutes().then(res => {
+  async generateRoutes({ commit }, roles) {
+    let PermissionRouters = await getAsyncRoutes().then(res => {
       const data = res.data
-      const PermissionRouters = makePermissionRouters(data, clientRoutes)
-      return new Promise(resolve => {
-        let accessedRoutes
-        if (roles.includes('admin')) {
-          accessedRoutes = PermissionRouters || []
-        } else {
-          accessedRoutes = filterAsyncRoutes(PermissionRouters, roles)
-        }
-        console.log(accessedRoutes)
+      PermissionRouters = makePermissionRouters(data, clientRoutes)
+      // console.log('api:' + PermissionRouters)
+      return PermissionRouters
+    })
+    console.log(PermissionRouters)
+    return new Promise(resolve => {
+      let accessedRoutes
+      if (roles.includes('admin')) {
+        console.log(PermissionRouters)
 
-        commit('SET_ROUTES', accessedRoutes)
-        resolve(accessedRoutes)
-      })
+        accessedRoutes = PermissionRouters || []
+      } else {
+        accessedRoutes = filterAsyncRoutes(PermissionRouters, roles)
+      }
+      console.log(accessedRoutes)
+
+      commit('SET_ROUTES', accessedRoutes)
+      resolve(accessedRoutes)
     })
   }
 }
